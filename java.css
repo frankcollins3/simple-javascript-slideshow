@@ -1,0 +1,36 @@
+html {
+  padding: 0px; margin: 0px;
+}
+
+.wrapper {
+  width: 420px;
+  margin: 20px auto;
+}
+
+#slideshow {
+  width: 300px;
+  overflow: hidden;
+  height: 150px;
+  border: 0px solid red;
+  margin-top: 0px;
+}
+
+#frame {
+  width: 900px;
+  height: 400px;
+
+}
+
+#frame div img {
+  width: 300px;
+  float: right;
+}
+
+.pointers,
+#slideshow {
+  float: left;
+}
+
+.pointers {
+  width: 50px;
+}
