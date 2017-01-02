@@ -7,6 +7,8 @@ html {
 .wrapper {
   width: 720px;
   margin: 20px auto;
+  clear: both;
+  border: 0px solid purple;
 }
 
 #slideshow {
@@ -35,4 +37,20 @@ html {
 
 .pointers {
   width: 50px;
+}
+
+.clear {
+  clear: both;
+}
+
+#about-text {
+  border: 0px solid green;
+  clear: both;
+  text-align: center;
+  width: 600px;
+  margin: 0px auto;
+}
+
+#about-text p {
+  margin-top: 30px;
 }
