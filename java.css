@@ -5,26 +5,26 @@ html {
 }
 
 .wrapper {
-  width: 420px;
+  width: 720px;
   margin: 20px auto;
 }
 
 #slideshow {
-  width: 300px;
+  width: 600px;
   overflow: hidden;
-  height: 150px;
+  height: 300px;
   border: 0px solid red;
   margin-top: 0px;
 }
 
 #frame {
-  width: 900px;
+  width: 1800px;
   height: 400px;
 
 }
 
 #frame div img {
-  width: 300px;
+  width: 600px;
   float: right;
 }
 

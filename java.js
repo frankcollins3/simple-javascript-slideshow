@@ -7,10 +7,10 @@ At any given time, Javascript is passing along three images to the DOM.
 The "current", "previous," and "next" image. Each time the slider moves
 the array is updated as well as the images that are being 
 passed along to the DOM.
-*/
+*/ 
 
 updateSlides();
-document.getElementById("frame").style.marginLeft = "-600px";
+document.getElementById("frame").style.marginLeft = "-1200px";
 //console.log("Start " + slides[1]);
 
 var clickBack = document.querySelector('.back');
@@ -45,9 +45,9 @@ function moveBack() {
   updateSlides();
   //console.log("Start Backwards " + slides[1]);
   var id = setInterval(frame, 1);
-  var left = -600;
+  var left = -1200;
   function frame() {
-    if (left > -301) {
+    if (left > -601) {
       clearInterval(id);
     } else {
       left = left + 2;
@@ -64,9 +64,9 @@ function moveBack() {
 function moveForward () {
   console.log("Start Forward " + slides[1]);
   var id = setInterval(frame, 1);
-  var right = -300;
+  var right = -600;
   function frame() {
-    if (right < -600) {
+    if (right < -1200) {
       clearInterval(id);
     } else {
       right = right -2;
