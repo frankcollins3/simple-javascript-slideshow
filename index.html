@@ -1,9 +1,12 @@
 <html>
-<head>
+<head> 
   <title>Javascript Slideshow</title>
-
-  <!-- Create a list of images to appear in slideshow -->
   <link rel="stylesheet" type="text/css" href="java.css">
+
+  <!-- Create a list of images to appear in slideshow. Add as many images as you like. Simply add their file names to this list. 
+  * Each file should be placed in :"images/.."
+  * Includ a comma after each image. -->
+
   <script type="text/javascript">
     var slides = [
       "one.jpg",
@@ -12,7 +15,6 @@
       "four.jpg",
       "five.jpg"
     ]
-
   </script>
 
 </head>
@@ -20,6 +22,8 @@
   <div class="wrapper">
     <button class="pointers back">Back</button>
     <div id="slideshow">
+
+      <!-- Using Javascript to insert 3 images at time into the FRAME. Only the middle one is visible, except during animations.  -->
       <div id="frame">
 
       </div>
