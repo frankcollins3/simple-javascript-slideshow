@@ -13,8 +13,8 @@ updateSlides();
 document.getElementById("frame").style.marginLeft = "-1200px";
 //console.log("Start " + slides[1]);
 
-var clickBack = document.querySelector('.back');
-var clickForward = document.querySelector('.forward');
+var clickBack = document.querySelector('.arrow-prev');
+var clickForward = document.querySelector('.arrow-next');
 
 clickBack.addEventListener('click', moveBack);
 clickForward.addEventListener('click', moveForward);

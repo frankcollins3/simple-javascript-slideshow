@@ -9,18 +9,32 @@ ul, .left-align {
 }
 
 .wrapper {
-  width: 720px;
+  position: relative;
+  width: 640px;
   margin: 20px auto;
   clear: both;
   border: 0px solid purple;
 }
 
 #slideshow {
-  width: 600px;
+  
+  width: 598px;
   overflow: hidden;
   height: 300px;
-  border: 0px solid red;
-  margin-top: 0px;
+  border: 2px solid black;
+  margin: 0px 20px;
+}
+
+.arrow-prev {
+  position: absolute;
+  top: 120px;
+  left: -3px;
+}
+
+.arrow-next {
+  position: absolute;
+  top: 120px;
+  right: -5px;
 }
 
 #frame {
