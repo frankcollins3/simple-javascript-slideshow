@@ -4,6 +4,10 @@ html {
   padding: 0px; margin: 0px;
 }
 
+ul, .left-align {
+  text-align: left;
+}
+
 .wrapper {
   width: 720px;
   margin: 20px auto;
@@ -46,7 +50,6 @@ html {
 #about-text {
   border: 0px solid green;
   clear: both;
-  text-align: center;
   width: 600px;
   margin: 0px auto;
 }
