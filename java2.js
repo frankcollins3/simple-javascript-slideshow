@@ -2,12 +2,14 @@
 My initial approach for this project is to totally 
 manage the images in Javascript. User can enter image file 
 names into opening script of HTML doc. 
-
+ 
 At any given time, Javascript is passing along three images to the DOM. 
 The "current", "previous," and "next" image. Each time the slider moves
 the array is updated as well as the images that are being 
 passed along to the DOM.
 */ 
+
+//alert(slides[1]['fileName']);
 
 updateSlides();
 document.getElementById("frame").style.marginLeft = "-1200px";
@@ -25,6 +27,7 @@ active images at any given time. */
 function updateSlides() {
   document.getElementById('frame').innerHTML =  
   '<div class="slidewrapper"><div class="spanwrapper">' + slides[2]['caption'] + '</div><img src="images/' + slides[2]['fileName'] + '"></div><div class="slidewrapper"><div class="spanwrapper">' + slides[1]['caption'] + '</div><img src="images/' + slides[1]['fileName'] + '"></div><div class="slidewrapper"><div class="spanwrapper">' + slides[0]['caption'] + '</div><img src="images/' + slides[0]['fileName'] + '"></div>';
+  console.log(slides[2]['caption']);
 }
 
 
