@@ -10,7 +10,7 @@ passed along to the DOM.
 */ 
 
 updateSlides();
-document.getElementById("frame").style.marginLeft = "-1200px";
+document.getElementById("frame").style.marginLeft = "-1800px";
 //console.log("Start " + slides[1]);
 
 var clickBack = document.querySelector('.arrow-prev');
