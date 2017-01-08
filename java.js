@@ -1,32 +1,95 @@
-/* 
-My initial approach for this project is to totally 
-manage the images in Javascript. User can enter image file 
-names into opening script of HTML doc. 
 
-At any given time, Javascript is passing along three images to the DOM. 
-The "current", "previous," and "next" image. Each time the slider moves
-the array is updated as well as the images that are being 
-passed along to the DOM.
-*/ 
+// The visible slide at start will be the slide
+// with the index of 1
+var activeSlide = 1;
+console.log(slides);
+var captionVisible = true;
 
-updateSlides();
-document.getElementById("frame").style.marginLeft = "-1800px";
-//console.log("Start " + slides[1]);
+timVar = 1;
 
-var clickBack = document.querySelector('.arrow-prev');
-var clickForward = document.querySelector('.arrow-next');
+displayCenterSlide();
 
-clickBack.addEventListener('click', moveBack);
-clickForward.addEventListener('click', moveForward);
+var clickNext = document.querySelector('.arrow-next');
+var clickPrev = document.querySelector('.arrow-prev');
 
-/* upDate slides is the function that updates the DOM with the three 
-active images at any given time. */
+clickNext.addEventListener('click', moveNext);
+clickPrev.addEventListener('click', movePrev);
 
-function updateSlides() {
-  document.getElementById('frame').innerHTML =  
-  '<div class="slidewrapper"><div class="spanwrapper">' + slides[2]['caption'] + '</div><img src="images/' + slides[2]['fileName'] + '"></div><div class="slidewrapper"><div class="spanwrapper">' + slides[1]['caption'] + '</div><img src="images/' + slides[1]['fileName'] + '"></div><div class="slidewrapper"><div class="spanwrapper">' + slides[0]['caption'] + '</div><img src="images/' + slides[0]['fileName'] + '"></div>';
+function displayCenterSlide() {
+  document.getElementById('slides').classList.add('animate');
+
+  if (captionVisible == true) {
+    document.getElementById('active-slide').innerHTML = '<div class="caption">' + slides[activeSlide]['caption'] + '</div><img src="images/' + slides[activeSlide]['fileName'] + '">';
+    document.getElementById('left-slide').innerHTML = '<div class="caption">' + slides[activeSlide - 1]['caption'] + '</div><img src="images/' + slides[activeSlide - 1]['fileName'] + '">';  
+  } else {
+    document.getElementById('active-slide').innerHTML = '<div class="hide-caption">No Caption Visible</div><img src="images/' + slides[activeSlide]['fileName'] + '">';
+    document.getElementById('left-slide').innerHTML = '<div class="hide-caption">' + slides[activeSlide - 1]['caption'] + '</div><img src="images/' + slides[activeSlide - 1]['fileName'] + '">';  
+  }
+  document.getElementById('right-slide').innerHTML = '<div class="caption">' + slides[activeSlide + 1]['caption'] + '</div><img src="images/' + slides[activeSlide + 1]['fileName'] + '">';
+  document.getElementById('active-slide').children[0].classList.add('up');
 }
 
+function moveNext () {
+  document.getElementById('slides').classList.remove('animate-none');
+  document.getElementById('active-slide').children[0].classList.add('move-down');
+  setTimeout(function(){ 
+    document.getElementById('slides').classList.add('move-left'); 
+  }, 1000);
+  setTimeout(function(){ 
+    updateArrayForward ();
+    document.getElementById('active-slide').innerHTML = '<div class="caption down">' + slides[activeSlide]['caption'] + '</div><img src="images/' + slides[activeSlide]['fileName'] + '">';
+    //console.log(slides[activeSlide]['caption'] + ' and ' + slides[activeSlide]['fileName']);
+  }, 2000);
+  if (slides[activeSlide + 1]['caption'].length == 0) {
+    captionVisible = false;
+  } else {
+    captionVisible = true;
+  };
+  setTimeout(function(){ 
+    if (captionVisible == false) {
+      document.getElementById('active-slide').children[0].classList.remove('caption');
+    }
+    document.getElementById('active-slide').children[0].classList.add('move-up');
+  }, 2100);
+  setTimeout(function(){ 
+    document.getElementById('slides').classList.remove('animate');
+    document.getElementById('slides').classList.add('animate-none');
+    document.getElementById('slides').classList.remove('move-left');
+    displayCenterSlide();
+  }, 2800); 
+}
+
+function movePrev () {
+  document.getElementById('slides').classList.remove('animate-none');
+  document.getElementById('active-slide').children[0].classList.add('move-down');
+  setTimeout(function(){ 
+    document.getElementById('slides').classList.add('move-right'); 
+    
+  }, 1000);
+  setTimeout(function(){ 
+    updateArrayBack();
+    document.getElementById('left-slide').innerHTML = '<div class="caption down-left">' + slides[activeSlide]['caption'] + '</div><img src="images/' + slides[activeSlide]['fileName'] + '">';
+  }, 3000);
+  if (slides[activeSlide - 1]['caption'].length == 0) {
+    captionVisible = false;
+  } else {
+    captionVisible = true;
+  };
+  setTimeout(function(){ 
+    if (captionVisible == false) {
+      document.getElementById('left-slide').children[0].classList.renive('caption');
+      document.getElementById('left-slide').children[0].classList.add('hide-caption');
+    }
+    document.getElementById('left-slide').children[0].classList.add('move-up-left');
+  }, 3100);
+
+  setTimeout(function(){ 
+    document.getElementById('slides').classList.remove('animate');
+    document.getElementById('slides').classList.add('animate-none');
+    document.getElementById('slides').classList.remove('move-right');
+    displayCenterSlide();
+  }, 3800); 
+}
 
 /* Moves images in array backward One */
 function updateArrayBack() {
@@ -39,46 +102,3 @@ function updateArrayForward () {
   var temp = slides.shift();
   slides.push(temp);
 }
-
-/* Animates the slideshow backwards */
-function moveBack() {
-  updateSlides();
-  //console.log("Start Backwards " + slides[1]);
-  var id = setInterval(frame, 1);
-  var left = -1200;
-  function frame() {
-    if (left > -601) {
-      clearInterval(id);
-    } else {
-      left = left + 2;
-      document.getElementById("frame").style.marginLeft = (left) + "px";
-    }
-  };
-  updateArrayBack() 
-  document.getElementById("frame").style.marginLeft = "-600px";
-  //console.log("Finish Backwards" + slides[1]);
-  //console.log(slides);
-}
-
-/* Animates the slideshow forwards */
-function moveForward () {
-  console.log("Start Forward " + slides[1]);
-  var id = setInterval(frame, 1);
-  var right = -600;
-  function frame() {
-    if (right < -1200) {
-      clearInterval(id);
-    } else {
-      right = right -2;
-      document.getElementById("frame").style.marginLeft = (right) + "px";
-    }
-  };
-  updateArrayForward ();
-  updateSlides();
-
-  //console.log("Finish Forward " + slides[1]);
-  //console.log(slides);
-};
-
-
-

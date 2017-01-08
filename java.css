@@ -4,10 +4,6 @@ html {
   padding: 0px; margin: 0px;
 }
 
-ul, .left-align {
-  text-align: left;
-}
-
 .wrapper {
   position: relative;
   width: 640px;
@@ -16,8 +12,7 @@ ul, .left-align {
   border: 0px solid purple;
 }
 
-#slideshow {
-  
+#frame {
   width: 600px;
   overflow: hidden;
   height: 300px;
@@ -34,57 +29,125 @@ ul, .left-align {
 .arrow-next {
   position: absolute;
   top: 120px;
-  right: -5px;
+  right: -6px;
 }
 
-#frame {
-  width: 1900px; 
-  height: 400px;  
+/* The div that holds all three slide divs */
+
+#slides {
+  width: 1800px; 
+  height: 400px;
+  margin-left: -600px;  
 }
 
+#slides.animate {
+  transition-property: all;
+  transition-duration: 1.3s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
 
+#slides.animate-none {
+  transition-duration: 0s;
+}
 
-.pointers,
-#slideshow {
+#slides.animate.move-right {
+  margin-left: 0px;
+}
+
+#slides.animate.move-left {
+  margin-left: -1200px;
+}
+
+#slides div.image {
+  margin-top: -30px;
+  width: 600px;
+  height: 330px;
   float: left;
 }
 
-.slidewrapper {
-  float: left;
-  border: 0px solid green;
-  width: 600px;
+/* width of each div with or without an image in it */
 
-}
 
-.slidewrapper img {
+#slides img {
   width: 600px;
 }
 
-.spanwrapper {
-  position: relative;
-    top: 230px;
-  padding-left: 50px;
-  height: 30px;
+.caption {
+  padding: 5px 20px;
   background-color: rgba(255, 255, 255, 0.5);
-  z-index: 100;
-  margin-top: -30px; /* Offset the height of the caption div */
+  width: 560px;
+  height: 20px;
 }
 
-.pointers {
-  width: 50px;
+
+
+.caption.down {
+  position: relative;
+  top: 330px;
+  left: 600px;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1); 
+
 }
 
-.clear {
-  clear: both;
+.caption.down-left {
+  position: relative;
+  top: 330px;
+  left: 0px;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1); 
+
 }
 
-#about-text {
-  border: 0px solid green;
-  clear: both;
-  width: 600px;
-  margin: 0px auto;
+#active-slide {
+  position: relative;
 }
 
-#about-text p {
-  margin-top: 30px;
+.caption.up {
+  position: relative;
+  top: 300px;
+  left: 0px;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.caption.up-1 {
+  position: relative;
+  top: 300px;
+  left: 0px;
+  transition-property: all;
+  transition-duration: 1.5s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.caption.move-down {
+  position: relative;
+  top: 330px;
+}
+
+.caption.down.move-up {
+  position: relative;
+  left: 600px;
+  top: 300px;
+}
+
+.caption.down-left.move-up-left {
+  position: relative;
+  left: 0px;
+  top: 300px;
+  height: 20px;
+  width: 560px;
+  padding: 5px 20px;
+}
+
+.hide-caption {
+  position: relative;
+  top: 330px;
+  left: 600px;
+  height: 20px;
+  width: 560px;
+  padding: 5px 20px;
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <head> 
@@ -16,7 +16,7 @@
       {fileName: "one.jpg", caption: "First Image"},
       {fileName: "two.jpg", caption: "Second Image"},
       {fileName: "three.jpg", caption: "Third Image"},
-      {fileName: "four.jpg", caption: "Fourth Image"},
+      {fileName: "four.jpg", caption: ""},
       {fileName: "five.jpg", caption: "Fifth Image"}
     ];
   </script>
@@ -25,12 +25,14 @@
 <body>
   <div class="wrapper">
     <img class="arrow-prev" src="images/arrow-prev.png">
-    <div id="slideshow">
+    <div id="frame">
       
-      <!-- Using Javascript to insert 3 images at time into the FRAME. 
-      Only the middle one is visible, except during animations.  -->
-      <div id="frame">
-
+      <!-- Creating three div's into which we 
+      can insert the images with Javascript  -->
+      <div id="slides">
+        <div id="left-slide" class="image left"></div>
+        <div id="active-slide" class="image active"></div>
+        <div id="right-slide" class="image right"></div>
       </div>
       
     </div>  
@@ -38,25 +40,6 @@
     <p class="clear"></p>
   </div>
 
-  <div id="about-text">
-    <p>This is a Javascript learning exercise. I wrote this from 
-      scratch with pure vanilla Javascript. To see my code and 
-      offer feedback/advice. 
-      <a href="https://github.com/stpaultim/simple-javascript-slideshow">GitHub</a>
-    </p>
-    <p>I'm still working on this with a number of additional 
-      features planned (as of Jan 2, 2017). Project inspired by the request of a friend.
-    </p>
-    <p class="left-align">Rough list of planned features:
-    </p>
-    <ul>
-      <li>Slideshow roughly 600px x 200px.</li>
-      <li>Automatic advancement & Manual Controls</li>
-      <li>Caption slides up from bottom (only if there is a caption)</li>
-    </ul>
-    <p>Should look like this:</p>
-    <img src="images/slides.png">
-  </div>
 
 <script type="text/javascript" src="java.js"></script>
 </body>
