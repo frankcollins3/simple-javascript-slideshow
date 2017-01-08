@@ -151,3 +151,14 @@ html {
   width: 560px;
   padding: 5px 20px;
 }
+
+#about-text {
+  border: 0px solid green;
+  clear: both;
+  width: 600px;
+  margin: 0px auto;
+}
+
+#about-text p {
+  margin-top: 30px;
+}
