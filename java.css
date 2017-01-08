@@ -2,6 +2,8 @@
 
 html {
   padding: 0px; margin: 0px;
+  font-family: "Times New Roman", Times, serif;
+  
 }
 
 .wrapper {
@@ -37,7 +39,8 @@ html {
 #slides {
   width: 1800px; 
   height: 400px;
-  margin-left: -600px;  
+  margin-left: -600px; 
+  font-family: Arial, Gadget, sans-serif; 
 }
 
 #slides.animate {
@@ -74,9 +77,10 @@ html {
 
 .caption {
   padding: 5px 20px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 560px;
   height: 20px;
+  color: white;
 }
 
 
