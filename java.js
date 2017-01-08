@@ -2,18 +2,65 @@
 // The visible slide at start will be the slide
 // with the index of 1
 var activeSlide = 1;
-console.log(slides);
 var captionVisible = true;
 
-timVar = 1;
-
 displayCenterSlide();
+//startAutoForward();
 
 var clickNext = document.querySelector('.arrow-next');
 var clickPrev = document.querySelector('.arrow-prev');
+var clickAuto = document.querySelector('.auto-forward');
+var clickStop = document.querySelector('.stop-forward');
 
-clickNext.addEventListener('click', moveNext);
-clickPrev.addEventListener('click', movePrev);
+clickNext.addEventListener('click', moveNextCheck);
+clickNext.addEventListener('mouseover', hoverRight);
+clickNext.addEventListener('mouseout', offRight);
+clickPrev.addEventListener('mouseover', hoverLeft);
+clickPrev.addEventListener('mouseout', offLeft);
+clickPrev.addEventListener('click', movePrevCheck);
+clickAuto.addEventListener('click', startAutoForward);
+clickStop.addEventListener('click', stopAutoForward);
+clickStop.style.display = 'none';
+
+function hoverRight() {
+  document.querySelector('.arrow-next').src = 'images/arrow-next-hover.png';
+}
+
+function hoverLeft() {
+  document.querySelector('.arrow-prev').src = 'images/arrow-prev-hover.png';
+}
+
+function offRight() {
+  document.querySelector('.arrow-next').src = 'images/arrow-next.png';
+}
+
+function offLeft() {
+  document.querySelector('.arrow-prev').src = 'images/arrow-prev.png';
+}
+
+function startAutoForward() {
+  quickStart = setInterval(moveNext, 20);
+  setTimeout(pause, 21);
+  autoForward = setInterval(moveNext, 5000);
+  clickAuto.style.display = 'none';
+  clickNext.style.display = 'none';
+  clickPrev.style.display = 'none';
+  clickStop.style.display = 'inline';
+  document.getElementById('frame').style.borderColor = "maroon";
+}
+
+function pause() {
+  clearInterval(quickStart);
+}
+
+function stopAutoForward() {
+  clearInterval(autoForward);
+  clickAuto.style.display = 'inline';
+  clickNext.style.display = 'block';
+  clickPrev.style.display = 'block';
+  clickStop.style.display = 'none';
+  document.getElementById('frame').style.borderColor = "black";
+}
 
 function displayCenterSlide() {
   document.getElementById('slides').classList.add('animate');
@@ -29,7 +76,21 @@ function displayCenterSlide() {
   document.getElementById('active-slide').children[0].classList.add('up');
 }
 
-function moveNext () {
+function moveNextCheck() {
+  if (autoForward = false) {
+    clearInterval(autoForward);
+  }
+  moveNext();
+}
+
+function movePrevCheck() {
+  if (autoForward = false) {
+    clearInterval(autoForward);
+  }
+  movePrev();
+}
+
+function moveNext() {
   document.getElementById('slides').classList.remove('animate-none');
   document.getElementById('active-slide').children[0].classList.add('move-down');
   setTimeout(function(){ 
@@ -59,7 +120,7 @@ function moveNext () {
   }, 2800); 
 }
 
-function movePrev () {
+function movePrev() {
   document.getElementById('slides').classList.remove('animate-none');
   document.getElementById('active-slide').children[0].classList.add('move-down');
   setTimeout(function(){ 
@@ -77,7 +138,7 @@ function movePrev () {
   };
   setTimeout(function(){ 
     if (captionVisible == false) {
-      document.getElementById('left-slide').children[0].classList.renive('caption');
+      document.getElementById('left-slide').children[0].classList.remove('caption');
       document.getElementById('left-slide').children[0].classList.add('hide-caption');
     }
     document.getElementById('left-slide').children[0].classList.add('move-up-left');
@@ -98,7 +159,7 @@ function updateArrayBack() {
 }
 
 /* Moves images in array forward One */
-function updateArrayForward () {
+function updateArrayForward() {
   var temp = slides.shift();
   slides.push(temp);
 }

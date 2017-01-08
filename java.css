@@ -12,6 +12,30 @@ html {
   margin: 20px auto;
   clear: both;
   border: 0px solid purple;
+  text-align: center;
+}
+
+.stop-forward,
+.auto-forward {
+  text-align: center;
+  font-family: Arial, Gadget, sans-serif;
+  margin: 5px auto;
+  font-size: 16px;
+  font-weight: 600;
+  width: auto;
+  padding: 3px 18px;
+  background-color: grey;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: inline;
+  box-shadow: 3px 3px 5px black;
+}
+
+.stop-forward:hover,
+.auto-forward:hover {
+  background-color: green;
+  color: white;
+  border: 3px solid black;
 }
 
 #frame {
@@ -41,6 +65,7 @@ html {
   height: 400px;
   margin-left: -600px; 
   font-family: Arial, Gadget, sans-serif; 
+  text-align: left;
 }
 
 #slides.animate {
