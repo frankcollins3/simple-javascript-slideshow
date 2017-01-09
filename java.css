@@ -6,6 +6,7 @@ html {
   
 }
 
+/* The containger for the entire slideshow. */
 .wrapper {
   position: relative;
   width: 640px;
@@ -15,6 +16,17 @@ html {
   text-align: center;
 }
 
+/* This is the frame into which we place the active slide 
+   and hide the inactive slides */
+#frame {
+  width: 600px;
+  overflow: hidden;
+  height: 300px;
+  border: 2px solid black;
+  margin: 0px 20px;
+}
+
+/* CSS for navigation */
 .stop-forward,
 .auto-forward {
   text-align: center;
@@ -38,14 +50,6 @@ html {
   border: 3px solid black;
 }
 
-#frame {
-  width: 600px;
-  overflow: hidden;
-  height: 300px;
-  border: 2px solid black;
-  margin: 0px 20px;
-}
-
 .arrow-prev {
   position: absolute;
   top: 120px;
@@ -58,8 +62,7 @@ html {
   right: -6px;
 }
 
-/* The div that holds all three slide divs */
-
+/* The div that holds the three active slides at any given time */
 #slides {
   width: 1800px; 
   height: 400px;
@@ -68,6 +71,8 @@ html {
   text-align: left;
 }
 
+/* CSS classes to help with animation.
+   This could be cleaned up a little more */
 #slides.animate {
   transition-property: all;
   transition-duration: 1.3s;
@@ -93,9 +98,6 @@ html {
   float: left;
 }
 
-/* width of each div with or without an image in it */
-
-
 #slides img {
   width: 600px;
 }
@@ -107,8 +109,6 @@ html {
   height: 20px;
   color: white;
 }
-
-
 
 .caption.down {
   position: relative;
@@ -181,6 +181,7 @@ html {
   padding: 5px 20px;
 }
 
+/* Simple CSS for the 'about text' on page */
 #about-text {
   border: 0px solid green;
   clear: both;
