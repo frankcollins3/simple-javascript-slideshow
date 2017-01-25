@@ -189,6 +189,10 @@ html {
   margin: 0px auto;
 }
 
+.center {
+  text-align: center;
+}
+
 #about-text p {
   margin-top: 30px;
 }
